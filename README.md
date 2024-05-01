@@ -1,118 +1,101 @@
 # Emo_Conversational_AI
-Conversational AI can express emotions and mimic the nuances of any person's voice as well as emotional characteristics.
+Conversational AI that expresses emotions and mimics human voice nuances and emotional characteristics.
 
-## Outline of the project
+## Outline of the Project
 
-### Task 1: Transcription of the audio files it can be live-streaming audio or pre-recorded audio files.
+### Task 1: Transcription of Audio Files
+Utilizing Ctranslate2 with the Whisper model to address latency in real-time audio transcription. Overlapping batch processing ensures a seamless transcription experience while maintaining context.
 
-I am using the Ctranslate2 library implementation of the whisper model to tackle the latency and for real-time audio transcription I using overlapping batch processing this solves two problems it creates a sense of real-time audio transcription by outputting the transcription in 3-second batches and at the same time does not lose context because of the overlapping of the audio chucks helps in maintaining the context of transcription.
+Additional testing with WhisperX: [WhisperX GitHub](https://github.com/m-bain/whisperX/tree/main)
 
-I also plan to test WhisperX [https://github.com/m-bain/whisperX/tree/main]
+#### Dependencies for this task:
+- Python 3.8+
+- portaudio
+- librosa
+- soundfile
+- av==11.*
+- ctranslate2>=4.0,<5
+- huggingface_hub>=0.13
+- tokenizers>=0.13,<0.16
+- onnxruntime>=1.14,<2
+- torch>=2
+- torchaudio>=2
+- faster-whisper==1.0.0
+- transformers
+- pandas
+- setuptools>=65
+- nltk
 
-### Dependencies required for this task:
-Python 3.8 or greater
+### Installation of Prerequisites
 
-portaudio
+#### PortAudio (audio I/O library)
 
-librosa 
-
-soundfile
-
-av==11.*
-
-ctranslate2>=4.0,<5
-
-huggingface_hub>=0.13
-
-tokenizers>=0.13,<0.16
-
-onnxruntime>=1.14,<2
-
-torch>=2
-
-torchaudio>=2
-
-faster-whisper==1.0.0
-
-transformers
-
-pandas
-
-setuptools>=65
-
-nltk
-
-## Prerequisites
-
-This project requires `PortAudio`, an audio I/O library that enables low-latency audio processing.
-
-### Installation
-
-#### Linux
+##### Linux
 - Debian/Ubuntu: `sudo apt-get install portaudio19-dev`
 - Red Hat/Fedora: `sudo dnf install portaudio-devel`
 
-#### macOS
-- Install Homebrew: `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`
-- `brew install portaudio`
+##### macOS
+- Install Homebrew, then: `brew install portaudio`
 
-#### Windows
-- Install vcpkg: Follow the instructions at https://github.com/microsoft/vcpkg
-- `vcpkg install portaudio`
+##### Windows
+- Install vcpkg, then: `vcpkg install portaudio`
 
-Please ensure that you have the appropriate development files for `PortAudio` installed to build and run projects that depend on it.
+### Task 2: Interaction with Large Language Models
+Testing various large language models to generate responses based on transcribed input.
 
+Models to test:
+1. [LLAMA 3](https://github.com/meta-llama/llama3)
+2. [LLAMA 2](https://github.com/meta-llama/llama)
+3. [GPT-2](https://github.com/openai/gpt-2/tree/master)
+4. [FALCON](https://huggingface.co/tiiuae/falcon-40b)
+5. [MISTRAL](https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.2)
 
-## Task 2: Using Large Language Models to take in the transcription input and generate answers.
+#### Dependencies:
+- torch
+- fairscale
+- fire
+- sentencepiece
+- regex
+- requests
+- tqdm
 
-I am going to test multiple large language models on various matrics the list of models is as follows:
+### Tools Required
+- **wget**: For downloading data.
+- **md5sum**: To verify data integrity.
 
-1. LLAMA 3 [https://github.com/meta-llama/llama3]
-2. LLAMA 2 [https://github.com/meta-llama/llama]
-3. GPT 2 [https://github.com/openai/gpt-2/tree/master]
-4. FALCON [https://huggingface.co/tiiuae/falcon-40b]
-5. MISTRAL [https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.2]
+### Task 3: Voice Synthesis
+Initial implementation based on [Real-Time Voice Cloning](https://github.com/CorentinJ/Real-Time-Voice-Cloning), with plans for advanced models in future iterations.
 
-### Dependencies required this dependencies may change over time as this models keep updating and may require some additional installations in the future:
+#### Required Dependencies:
+- Please create a separate environment due to compatibility issues with older dependencies:
+  - ffmpeg
+  - PyTorch
+  - Pyaudio
+  - torchaudio
+  - inflect==5.3.0
+  - librosa==0.8.1
+  - matplotlib==3.5.1
+  - numpy==1.20.3
+  - Pillow==8.4.0
+  - PyQt5==5.15.6
+  - scikit-learn==1.0.2
+  - scipy==1.7.3
+  - sounddevice==0.4.3
+  - SoundFile==0.10.3.post1
+  - tqdm==4.62.3
+  - umap-learn==0.5.2
+  - Unidecode==1.3.2
+  - urllib3==1.26.7
+  - visdom==0.1.8.9
+  - webrtcvad==2.0.10
 
-torch
+## Adding Streamlit for Web Application Development
+To enable web-based interaction, Streamlit will be used for creating intuitive and interactive web interfaces.
 
-fairscale
-
-fire
-
-sentencepiece
-
-regex
-
-requests
-
-tqdm
-
-## Prerequisites
-
-This part also requires the following tools:
-
-- **wget**: Needed for downloading data.
-- **md5sum**: Used to verify the integrity of downloaded files.
-
-### Installation
-
-#### Linux
-- Debian/Ubuntu: `sudo apt-get install wget coreutils`
-- Red Hat/Fedora: `sudo dnf install wget coreutils`
-
-#### macOS
-- Install Homebrew: `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`
-- `brew install wget`
-- `brew install coreutils` (provides `gmd5sum`)
-
-#### Windows
-- Install Chocolatey: Follow instructions at https://chocolatey.org/install
-- `choco install wget`
-- `choco install md5deep`
-
-Please replace these commands with appropriate equivalents if you are using a different package manager or installation method.
+### Streamlit Requirements:
+- Ensure the server has Python 3.8+ installed.
+- Install Streamlit using pip:
+- I will require to host this on public network as I can't access the university server on the same network as mine.
 
 
 
