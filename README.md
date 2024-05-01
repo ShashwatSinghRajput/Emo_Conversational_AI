@@ -9,18 +9,38 @@ I am using the Ctranslate2 library implementation of the whisper model to tackle
 
 ### Dependencies require for this task:
 Python 3.8 or greater
+
 portaudio
+
 librosa 
+
 soundfile
+
 av==11.*
+
 ctranslate2>=4.0,<5
+
 huggingface_hub>=0.13
+
 tokenizers>=0.13,<0.16
+
 onnxruntime>=1.14,<2
+
 torch>=2
+
 torchaudio>=2
+
 faster-whisper==1.0.0
+
 transformers
+
 pandas
+
 setuptools>=65
+
 nltk
+
+
+
+
+
